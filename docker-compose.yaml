@@ -1,0 +1,31 @@
+version: "3"
+name: supergraph-apollo
+services:
+  threads:
+    container_name: threads
+    build:
+      context: ./services/threads
+    environment:
+      PG_CONNECTION_STRING: postgres://postgres:postgrespassword@host.docker.internal:8432/postgres
+      PORT: 4001
+    ports: ["4001:4001"]
+  posts:
+    container_name: posts
+    build:
+      context: ./services/posts
+    environment:
+      PG_CONNECTION_STRING: postgres://postgres:postgrespassword@host.docker.internal:7432/postgres
+      PORT: 4002
+    ports: ["4002:4002"]
+  gateway:
+    container_name: gateway
+    build:
+      context: ./services/gateway
+    depends_on:
+      - threads
+      - posts
+    environment:
+      PORT: 8000
+      THREADS_URL: http://host.docker.internal:4001
+      POSTS_URL: http://host.docker.internal:4002
+    ports: ["8000:8000"]
