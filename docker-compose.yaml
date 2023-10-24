@@ -2,7 +2,6 @@ version: "3"
 name: supergraph-apollo
 services:
   threads:
-    container_name: threads
     build:
       context: ./services/threads
     environment:
@@ -10,7 +9,6 @@ services:
       PORT: 4001
     ports: ["4001:4001"]
   posts:
-    container_name: posts
     build:
       context: ./services/posts
     environment:
@@ -18,7 +16,6 @@ services:
       PORT: 4002
     ports: ["4002:4002"]
   gateway:
-    container_name: gateway
     build:
       context: ./services/gateway
     depends_on:
