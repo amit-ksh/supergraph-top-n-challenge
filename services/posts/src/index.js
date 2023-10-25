@@ -7,6 +7,11 @@ import resolvers from "./resolvers.js";
 
 const schema = {
   typeDefs: gql`
+    extend schema
+      @link(
+        url: "https://specs.apollo.dev/federation/v2.0"
+        import: ["@key", "@shareable", "@external"]
+      )
     scalar DateTime
 
     type Post @key(fields: "id") {

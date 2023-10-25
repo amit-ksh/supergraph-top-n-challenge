@@ -7,6 +7,11 @@ import { Query } from "./resolvers.js";
 
 const schema = {
   typeDefs: gql`
+    extend schema
+      @link(
+        url: "https://specs.apollo.dev/federation/v2.0"
+        import: ["@key", "@shareable", "@external"]
+      )
     scalar DateTime
 
     type Thread @key(fields: "id") {
