@@ -10,11 +10,11 @@ const federatedApi = introspect.federation({
   upstreams: [
     {
       name: "Threads",
-      url: new URL("/query", "http://localhost:4001/").href,
+      url: new URL("/query", "http://host.docker.internal:4001/").href,
     },
     {
       name: "Posts",
-      url: new URL("/query", "http://localhost:4002/").href,
+      url: new URL("/query", "http://host.docker.internal:4002/").href,
     },
   ],
 });
