@@ -14,7 +14,7 @@ import (
 func (r *threadResolver) Posts(ctx context.Context, obj *model.Thread, limit int) ([]*model.Post, error) {
 	var posts []*model.Post
 
-	rows, err := r.DB.Query(context.Background(), "SELECT * FROM posts WHERE thread_id = $1 LIMIT $2", obj.ID, limit)
+	rows, err := r.DB.Query(context.Background(), "SELECT * FROM posts WHERE thread_id = $1 ORDER BY created DESC LIMIT $2", obj.ID, limit)
 	if err != nil {
 		return nil, err
 	}

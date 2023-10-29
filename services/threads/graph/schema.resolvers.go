@@ -14,7 +14,7 @@ import (
 func (r *queryResolver) Threads(ctx context.Context, limit int) ([]*model.Thread, error) {
 	var threads []*model.Thread
 
-	rows, err := r.DB.Query(context.Background(), "SELECT * FROM threads LIMIT $1", limit)
+	rows, err := r.DB.Query(context.Background(), "SELECT * FROM threads ORDER BY created DESC LIMIT $1", limit)
 	if err != nil {
 		return nil, err
 	}
