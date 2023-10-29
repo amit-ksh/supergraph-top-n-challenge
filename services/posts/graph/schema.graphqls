@@ -1,0 +1,12 @@
+scalar Time
+
+type Post {
+  id: Int!
+  created: Time!
+  thread_id: Int!
+}
+
+extend type Thread @key(fields: "id") {
+  id: Int! @external
+  posts(limit: Int!): [Post!]! @requires(fields: "id")
+}

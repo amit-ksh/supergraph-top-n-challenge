@@ -1,0 +1,17 @@
+{
+  "name": "wundergraph-gateway",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "wunderctl up",
+    "start:prod": "wunderctl start",
+    "build": "wunderctl generate",
+    "check": "tsc --noEmit"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@wundergraph/sdk": "^0.180.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.2"
+  }
+}

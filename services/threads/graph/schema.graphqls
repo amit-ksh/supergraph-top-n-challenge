@@ -1,0 +1,10 @@
+scalar Time
+
+type Thread @key(fields: "id") {
+  id: Int!
+  created: Time!
+}
+
+type Query {
+  threads(limit: Int!): [Thread!]!
+}
